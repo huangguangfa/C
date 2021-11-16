@@ -2,11 +2,9 @@
 #include <stdio.h>
 
 int main(){
-    int* p;
-    int i;
-    p = &i;
-    *p = 12;
-    printf("i：%i \n", i); // i：12 
-    printf("p：%i \n", *p); // p：12 
+    short* j;
+    j = (short*)0x1234;
+    j = j + 1;
+    printf(" %p \n", &j); // 0x7ffee2d38808
 }
 
