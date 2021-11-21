@@ -1,13 +1,13 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-int test(){
-    return 1;
-}
-void test1( int (*fn)(void), int i ){
-    int res = (*fn)() + i;
-    printf("结果：%d \n", res); // 结果：2 
+void test()
+{
+    printf("函数意味结束 \n");
 }
 
 int main(){
-    test1(test,1);
+    printf("准备结束 \n");
+    atexit(test);
+    exit(EXIT_FAILURE);
 }

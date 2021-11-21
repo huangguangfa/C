@@ -57,14 +57,14 @@ int main(void) {
 
 ### 参数的传值引用
 ```c
-    void increment(int s){
-        ++s;
-    }
-    int main(){
-        int i = 1;
-        increment(i);
-        printf("i=%i \n",i); //i=1 
-    }
+void increment(int s){
+    ++s;
+}
+int main(){
+    int i = 1;
+    increment(i);
+    printf("i=%i \n",i); //i=1 
+}
 ```
 >上面示列并不能修改i的真实值、这是因为传入的变量值是一个拷贝、而不是变量i本身、所以需要return出最新的计算结果、也可以使用指针来修改、请看下面案例：交换值
 
@@ -112,5 +112,44 @@ int main(){
     test1(test,1);
 }
 ```
+
+> 因为入口函数main里面执行的函数需要先声明、导致我们的一些函数需要先在main函数上面定义好、有没有别的方式可以定义main函数下方呢？答案：有的
+
+> C提供、只要在程序开头给出函数原型、函数就可以先使用后声明、所谓的函数原型其实就是提前告诉编译器、上代码理解下吧
+
+```
+int test(int);
+
+int main(){
+    test(1);
+}
+
+int test(int num){
+    printf("res \d", num);
+    return 2 * num;
+}
+
+```
+
+### exit() 和 atexit
+> exit是用来结束程序的、而atexit是exit退出后的执行函数、用来做一些函数结束后的收尾工作、我们叫他登记函数、两个函数都是定义在`stalib.h`里面
+
+```c
+void test()
+{
+    printf("函数意味结束 \n");
+}
+
+int main(){
+    printf("准备结束 \n");
+    atexit(test);
+    exit(EXIT_FAILURE);
+}
+```
+
+### extern 说明符
+
+
+
 
 
