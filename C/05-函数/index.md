@@ -148,8 +148,59 @@ int main(){
 ```
 
 ### extern 说明符
+> extern说明符、一般用在变量名前或函数名前、告知编译器这个方法或者变量是来自其他文件的
+```c
+ // extern.c
+#include <stdio.h>
+int num = 0;
+void layout()
+{
+    printf("我是extern函数的变量：%d \n", num);
+}
+
+// index.c
+#include<stdio.h>
+
+extern void layout();
+extern int num;
+int main()
+{
+    int num = 111;
+    layout();
+    printf("main %d \n", num);
+    return 0;
+}
+// 执行 gcc index.c extern.c
+```
+### static说明符、很有意思的
+> static 他主要作用就是在函数体的变量让他保存计算结果、不会随着函数执行完被销毁
+
+```c
+#include <stdio.h>
+
+int add()
+{
+    static int sum = 1;
+    sum++;
+    return sum;
+}
+
+int main()
+{
+    int res = add();
+    int res1 = add();
+    printf("res %d \n", res); // 2
+    printf("res1 %d \n", res1); // 3
+    return 0;
+}
+```
 
 
+### const 说明符
+> 函数参数里面的const说明符，表示函数内部不得修改该参数变量
 
-
-
+```c
+void f(const int* p) {
+  *p = 0; // 该行报错
+}
+```

@@ -1,13 +1,17 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
 
-void test()
+int add()
 {
-    printf("函数意味结束 \n");
+    static int sum = 1;
+    sum++;
+    return sum;
 }
 
-int main(){
-    printf("准备结束 \n");
-    atexit(test);
-    exit(EXIT_FAILURE);
+int main()
+{
+    int res = add();
+    int res1 = add();
+    printf("res %d \n", res); // 2
+    printf("res1 %d \n", res1); // 3
+    return 0;
 }
