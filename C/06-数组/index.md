@@ -62,3 +62,38 @@ int array[2][2] = {
 
 ```
 ### 数组的内存地址
+
+```c
+int main(){
+    int a[5] = {1,2,3,4,5};
+    int *one;
+    one = &a[0];
+    printf("值为 %d \n",*one); //值为 1
+}
+
+int main(){
+    int array[2][5] = {};
+    array[0][1] = 1;
+    int* p;
+    p = &array[0][1];
+    printf("获取下标0数组下的第二项 %d \n", *p); // 1
+    printf("值 %d \n",*a);
+    return 0; 
+}
+
+// 统计数组的总数
+int sum(int* arr, int len){
+    int total = 0;
+    for( int i=0; i<len; i++ ){
+        total += arr[i];
+    }
+    return total;
+}
+int main(){
+    int a[5] = {1,2,3,4,5};
+    int res = sum(a, 5);
+    printf("结果 %d \n", res);
+    
+}
+```
+>c提供了便利写法就是默认数组名指向的是第一个成员 
