@@ -1,17 +1,35 @@
 #include <stdio.h>
+#include "test.h"
+// int add()
+// {
+//     static int sum = 1;
+//     sum++;
+//     return sum;
+// }
 
-int add()
+// int main()
+// {
+//     int res = add();
+//     int res1 = add();
+//     printf("res %d \n", res); // 2
+//     printf("res1 %d \n", res1); // 3
+//     return 0;
+// }
+
+int sum(int p)
 {
-    static int sum = 1;
-    sum++;
-    return sum;
+  if(p == 1){
+    printf("%d \n", p);
+  }
 }
 
 int main()
 {
-    int res = add();
-    int res1 = add();
-    printf("res %d \n", res); // 2
-    printf("res1 %d \n", res1); // 3
-    return 0;
+  int a = 1;
+
+  sum(a);
+
+  printf("%d \n", a);
+
+  return 0;
 }
